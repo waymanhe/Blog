@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	#main{
+		width: 300px;
+		height: 300px;
+		background-color: lightblue;
+		border-radius: 20px;
+		margin: 10px auto;
+	}
+
+	@-webkit-keyframes shake{
+		0%{
+			-webkit-transform:translateX(0px);
+		}
+		10%{
+			-webkit-transform:translateX(-10px);
+		}
+		20%{
+			-webkit-transform:translateX(0px);
+		}
+		30%{
+			-webkit-transform:translateX(10px);
+		}
+		40%{
+			-webkit-transform:translateX(0px);
+		}
+		50%{
+			-webkit-transform:translateX(-10px);
+		}
+		60%{
+			-webkit-transform:translateX(0px);
+		}
+		70%{
+			-webkit-transform:translateX(10px);
+		}
+		80%{
+			-webkit-transform:translateX(0px);
+		}
+	}
+	.ani{
+		-webkit-animation: shake 0.28s ease;
+	}
+	</style>
+	<!-- script src 是同步还是异步？-->
+	<script type="text/javascript" src='jquery-1.11.2.js'></script>
+	<script type="text/javascript">
+		$(function() {
+			
+			// $('#main').click(function(event) {
+			// 	$(this).removeClass().addClass('ani');
+			// });
+
+			// step1
+			// $('#main').click(function(event) {
+			// 	var $self = $(this).addClass('ani');
+			// 	setTimeout(function(){
+			// 		$self.removeClass('ani');
+			// 	},280);
+			// });
+
+			// step 2
+			// $('#main').click(function(event) {
+			// 	var $newOne = $(this).clone(true);
+			// 	$(this).replaceWith($newOne);
+			// 	$newOne.addClass('ani');
+			// });
+
+			// step3
+			$('#main').click(function(event) {
+				$(this).removeClass('ani');
+
+				// reflow 回流的概念
+				$(this).width($(this).width());
+
+				$(this).addClass('ani');
+			});
+
+		});
+	</script>
+</head>
+<body>
+
+	<div id="main">
+		
+	</div>
+
+</body>
+</html>
